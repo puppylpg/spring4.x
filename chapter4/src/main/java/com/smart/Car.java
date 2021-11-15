@@ -7,6 +7,9 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean, DisposableBean {
 	private String brand;
 	private String color;
@@ -32,6 +35,7 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean, D
 		return color;
 	}
 
+	@Override
 	public String toString() {
 		return "brand:" + brand + "/color:" + color + "/maxSpeed:"+ maxSpeed;
 	}
@@ -67,7 +71,7 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean, D
 
 	// InitializingBean接口方法
 	public void afterPropertiesSet() throws Exception {
-		System.out.println("调用InitializingBean.afterPropertiesSet()。");
+		System.out.println("初始化时：我自己独有的初始化修改器：调用InitializingBean.afterPropertiesSet()。");
 	}
 
 	// DisposableBean接口方法
@@ -75,13 +79,23 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean, D
 		System.out.println("调用DisposableBean.destory()。");
 	}
 
-	public void myInit() {		
+	public void myInit() {
 		System.out.println("调用myInit()，将maxSpeed设置为240。");
 		this.maxSpeed = 240;
+	}
+
+	@PostConstruct
+	public void annotationInit() {
+		System.out.println("调用@PostConstruct");
 	}
 
 	public void myDestory() {
 		System.out.println("调用myDestroy()。");
 	}
-	
+
+	@PreDestroy
+	public void annotationDestroy() {
+		System.out.println("调用@PreDestroy");
+	}
+
 }
