@@ -5,12 +5,11 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	<context:component-scan base-package="com.smart.aop" />
-	<bean id="waiter" class="com.smart.advisor.Waiter" />
-	<bean id="greetingAdvice" class="com.smart.advisor.GreetingBeforeAdvice" />
+	<bean id="naiveStudent" class="com.smart.advisor.NaiveStudent" />
+	<bean id="prepareAdvice" class="com.smart.advisor.PrepareBeforeAdvice" />
 	<!--通过Advisor自动创建代理-->
 	<bean id="regexpAdvisor"
 		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
-		p:patterns=".*To.*" p:advice-ref="greetingAdvice"  />
-	<bean
-		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"  p:proxyTargetClass="true" />
+		p:patterns=".*examine.*" p:advice-ref="prepareAdvice"  />
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"  p:proxyTargetClass="true" />
 </beans>

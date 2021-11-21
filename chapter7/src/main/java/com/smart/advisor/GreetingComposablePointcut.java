@@ -10,7 +10,7 @@ public class GreetingComposablePointcut {
 	   ComposablePointcut cp = new ComposablePointcut();
 	   Pointcut pt1 = new ControlFlowPointcut(WaiterDelegate.class,"service");
 	   NameMatchMethodPointcut pt2 = new NameMatchMethodPointcut();
-	   pt2.addMethodName("greetTo");
+	   pt2.addMethodName("examine");
 	   return cp.intersection(pt1).intersection((Pointcut)pt2);    
    }
 }

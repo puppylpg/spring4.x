@@ -1,12 +1,12 @@
 package com.smart.advisor;
 
 public class WaiterDelegate {
-	private Waiter waiter;
+	private NaiveStudent naiveStudent;
 	public void service(String clientName) {
-		waiter.greetTo(clientName);
-		waiter.serveTo(clientName);
+		naiveStudent.examine(clientName);
+		naiveStudent.play(clientName);
 	}
-	public void setWaiter(Waiter waiter) {
-		this.waiter = waiter;
+	public void setNaiveStudent(NaiveStudent naiveStudent) {
+		this.naiveStudent = naiveStudent;
 	}
 }

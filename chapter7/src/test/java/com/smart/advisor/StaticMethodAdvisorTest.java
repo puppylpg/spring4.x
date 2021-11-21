@@ -10,10 +10,10 @@ public class StaticMethodAdvisorTest {
 	public void staticMethod(){
 		String configPath = "com/smart/advisor/beans.xml";
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
-		Waiter waiter = (Waiter)ctx.getBean("waiter");
-		Seller seller = (Seller)ctx.getBean("seller");
-		waiter.greetTo("John");
-		waiter.serveTo("John");
-		seller.greetTo("John");	
+		NaiveStudent strengthenStudent = (NaiveStudent)ctx.getBean("strengthenStudent");
+		NaiveTeacher strengthenTeacher = (NaiveTeacher)ctx.getBean("strengthenTeacher");
+		strengthenStudent.examine("math");
+		strengthenStudent.play("halo");
+		strengthenTeacher.examine("math");
 	}
 }

@@ -4,33 +4,32 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-	<bean id="greetingBefore" class="com.smart.advice.GreetingBeforeAdvice" />
-	<bean id="greetingAfter" class="com.smart.advice.GreetingAfterAdvice" />
-	<bean id="greetingAdvice" class="com.smart.advice.GreetingBeforeAdvice" />
-	<bean id="greetingAround" class="com.smart.advice.GreetingInterceptor" />
-	<bean id="target" class="com.smart.advice.NaiveWaiter" />
+	<bean id="prepareBefore" class="com.smart.advice.PrepareBeforeAdvice" />
+	<bean id="relaxAfter" class="com.smart.advice.RelaxAfterAdvice" />
+	<bean id="prepareRelaxAround" class="com.smart.advice.PrepareRelaxAroundInterceptor" />
+	<bean id="naiveStudent" class="com.smart.advice.NaiveStudent" />
 
 
-	<!--1. greetingAdvice -->
+	<!--1. prepareAdvice -->
 	<!--
-		bean id="waiter"
+		bean id="naiveStudent"
 		class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:proxyInterfaces="com.smart.advice.Waiter" p:target-ref="target"
-		p:interceptorNames="greetingAdvice"/
+		p:proxyInterfaces="com.smart.advice.NaiveStudent" p:target-ref="target"
+		p:interceptorNames="prepareBefore"/
 	-->
 
 
 	<!--2. before and after advice -->
 	<!--
-		bean id="waiter"
+		bean id="naiveStudent"
 		class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:proxyInterfaces="com.smart.advice.Waiter" p:target-ref="target"
-		p:interceptorNames="greetingBefore,greetingAfter"/
+		p:proxyInterfaces="com.smart.advice.NaiveStudent" p:target-ref="target"
+		p:interceptorNames="greetingBefore,relaxAfter"/
 	-->
-    <!--3. around advice -->
-	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:proxyInterfaces="com.smart.advice.Waiter" p:target-ref="target"
-		p:interceptorNames="greetingAround" />
+    <!--3. weaving -->
+	<bean id="strengthenStudent" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:proxyInterfaces="com.smart.advice.Student" p:target-ref="naiveStudent"
+		  p:interceptorNames="prepareRelaxAround,prepareBefore,relaxAfter" />
 
 
 	<!--4. 异常抛出增强  -->
