@@ -5,8 +5,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 	<aop:aspectj-autoproxy/>
-	<bean id="naiveWaiter" class="com.smart.NaiveWaiter" />
-	<bean id="naughtyWaiter" class="com.smart.NaughtyWaiter" />
+	<bean id="naiveStudent" class="com.smart.NaiveStudent" />
+	<bean id="naughtyStudent" class="com.smart.NaughtyStudent" />
 	<bean id="seller" class="com.smart.SmartSeller" />
 	<bean id="test" class="com.smart.aspectj.advanced.TestAspect"/>
 </beans>

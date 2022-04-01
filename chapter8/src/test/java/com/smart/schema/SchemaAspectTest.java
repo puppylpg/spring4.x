@@ -1,10 +1,10 @@
 package com.smart.schema;
 
+import com.smart.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.smart.Seller;
-import com.smart.Waiter;
 import org.testng.annotations.Test;
 
 public class SchemaAspectTest {
@@ -14,30 +14,30 @@ public class SchemaAspectTest {
 	public void schema(){
 		String configPath = "com/smart/schema/beans.xml";
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
-		Waiter naiveWaiter = (Waiter) ctx.getBean("naiveWaiter");
-		Waiter naughtyWaiter = (Waiter) ctx.getBean("naughtyWaiter");	
+		Student naiveStudent = (Student) ctx.getBean("naiveStudent");
+		Student naughtyStudent = (Student) ctx.getBean("naughtyStudent");
 		Seller seller = (Seller) ctx.getBean("seller");
-//		naiveWaiter.greetTo("John");
-//		naughtyWaiter.greetTo("Tom");
+//		naiveStudent.examine("John");
+//		naughtyStudent.examine("Tom");
 		
 		//后置增强
 //		((SmartSeller)seller).sell("Beer","John");
 		
 		//环境增强
-//		naiveWaiter.serveTo("John");
+//		naiveStudent.play("John");
 		
 		//抛出异常增强
 //		((SmartSeller)seller).checkBill(1);
 		
 		//final增强
-//		naiveWaiter.greetTo("John");
+//		naiveStudent.examine("John");
 		
 		//引入增强
-//		((Seller)naiveWaiter).sell("Beer","John");
-//		((NaiveWaiter)naiveWaiter).smile("John", 2);
+//		((Seller)naiveStudent).sell("Beer","John");
+//		((NaiveStudent)naiveStudent).smile("John", 2);
 		
 		//advisor
-		naiveWaiter.greetTo("John");
+		naiveStudent.examine("John");
 		
 	}
 }

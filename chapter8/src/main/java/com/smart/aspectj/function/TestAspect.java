@@ -1,4 +1,4 @@
-package com.smart.aspectj.fun;
+package com.smart.aspectj.function;
 
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,11 +19,11 @@ public class TestAspect implements Ordered{
 //    public void allToFun(){
 //    	System.out.println("allToFun() executed!");
 //    }
-//    @Before("execution(* com.smart.aspectj.fun.Waiter.*(..))")
+//    @Before("execution(* com.smart.aspectj.fun.Student.*(..))")
 //    public void allWaiterFun(){
 //    	System.out.println("allWaiterFun() executed!");
 //    }
-//    @Before("execution(* com.smart.aspectj.fun.Waiter+.*(..))")
+//    @Before("execution(* com.smart.aspectj.fun.Student+.*(..))")
 //    public void allChildClassFun(){
 //    	System.out.println("allChildClassFun() executed!");
 //    }
@@ -32,10 +32,12 @@ public class TestAspect implements Ordered{
     public void jokeFun(){
     	System.out.println("jokeFun() executed!");
     }
-//    @AfterReturning("@annotation(com.smart.anno.NeedTest)")
-//    public void atAnnotaionTest(){
-//    	System.out.println("atAnnotaionTest() executed!");
-//    }
+
+    @AfterReturning("@annotation(com.smart.anno.NeedTest)")
+    public void atAnnotaionTest(){
+    	System.out.println("[after] a method with @NeedTest executed!");
+    }
+
 //    @AfterReturning("args(String)")
 //    public void argsTest(){
 //    	System.out.println("argsTest() executed!");
@@ -44,7 +46,7 @@ public class TestAspect implements Ordered{
 //    public void atArgsTest(){
 //    	System.out.println("atArgsTest() executed!");
 //    }
-//    @Before("within(com.smart.aspectj.fun.Waiter)")
+//    @Before("within(com.smart.aspectj.fun.Student)")
 //    public void withinTest(){
 //    	System.out.println("withinTest() executed!");
 //    }

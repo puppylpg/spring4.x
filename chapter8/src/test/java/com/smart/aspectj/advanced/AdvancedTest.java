@@ -1,8 +1,8 @@
 package com.smart.aspectj.advanced;
 
+import com.smart.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.smart.Waiter;
 import org.testng.annotations.*;
 
 public class AdvancedTest {
@@ -11,24 +11,24 @@ public class AdvancedTest {
 	public void advance() {
 		String configPath = "com/smart/aspectj/advanced/beans.xml";
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
-		Waiter naiveWaiter = (Waiter) ctx.getBean("naiveWaiter");
-		Waiter naughtyWaiter = (Waiter) ctx.getBean("naughtyWaiter");
-//		naiveWaiter.greetTo("John");
-//		naiveWaiter.serveTo("John");
-//		naughtyWaiter.greetTo("Tom");
-//		naughtyWaiter.serveTo("Tom");
+		Student naiveStudent = (Student) ctx.getBean("naiveStudent");
+		Student naughtyStudent = (Student) ctx.getBean("naughtyStudent");
+		naiveStudent.examine("math");
+		naiveStudent.play("halo");
+		naughtyStudent.examine("math");
+		naughtyStudent.play("halo");
 		
         //--通过joinPoint接口访问连接点上下文信息
-//		naiveWaiter.greetTo("John");
+//		naiveStudent.examine("John");
 		
 		//--绑定连接点参数
-//		((NaiveWaiter)naiveWaiter).smile("John",2);
+//		((NaiveStudent)naiveStudent).smile("John",2);
 		
 		//--绑定代理对象
-		naiveWaiter.greetTo("John");
+		naiveStudent.examine("John");
 		
 		//--绑定类注解
-//		((NaiveWaiter)naiveWaiter).greetTo("John");
+//		((NaiveStudent)naiveStudent).examine("John");
 
 		//绑定返回值
 //		SmartSeller seller = (SmartSeller) ctx.getBean("seller");

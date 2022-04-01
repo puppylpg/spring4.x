@@ -1,4 +1,4 @@
-package com.smart.aspectj.fun;
+package com.smart.aspectj.function;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.DeclareParents;
@@ -9,7 +9,7 @@ import com.smart.SmartSeller;
 
 @Aspect
 public class EnableSellerAspect implements Ordered {
-	@DeclareParents(value = "com.smart.NaiveWaiter", defaultImpl = SmartSeller.class)
+	@DeclareParents(value = "com.smart.NaiveStudent", defaultImpl = SmartSeller.class)
 	public static Seller seller;
 	public int getOrder() {
 		return 2;

@@ -5,10 +5,10 @@ import org.aspectj.lang.annotation.Pointcut;
 public class TestNamePointcut {
 	@Pointcut("within(com.smart.*)")
 	private void inPackage(){}
-//	
-//	@Pointcut("execution(* greetTo(..)))")
-//    protected void greetTo(){}
-//
-    @Pointcut("inPackage() and greetTo()")
+
+	@Pointcut("execution(* examine(..)))")
+    protected void examine(){}
+
+    @Pointcut("inPackage() and examine()")
     public void inPkgGreetTo(){}
 }

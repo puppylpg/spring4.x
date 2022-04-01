@@ -1,9 +1,9 @@
 package com.smart.aspectj.example;
 
+import com.smart.NaiveStudent;
+import com.smart.Student;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 
-import com.smart.NaiveWaiter;
-import com.smart.Waiter;
 import org.testng.annotations.Test;
 
 public class AspectJProxyTest {
@@ -11,12 +11,12 @@ public class AspectJProxyTest {
 
 	@Test
 	public void proxy(){
-		Waiter target = new NaiveWaiter();
+		Student target = new NaiveStudent();
 		AspectJProxyFactory factory = new AspectJProxyFactory();
 		factory.setTarget(target);
-		factory.addAspect(PreGreetingAspect.class);
-		Waiter proxy = factory.getProxy();
-		proxy.greetTo("John");
-		proxy.serveTo("John");
+		factory.addAspect(PrepareAspect.class);
+		Student proxy = factory.getProxy();
+		proxy.examine("math");
+		proxy.play("halo");
 	}
 }

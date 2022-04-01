@@ -8,7 +8,7 @@ import com.smart.SmartSeller;
 
 @Aspect
 public class EnableSellerAspect {
-   @DeclareParents(value="com.smart.NaiveWaiter",
+   @DeclareParents(value="com.smart.NaiveStudent",
 		   defaultImpl=SmartSeller.class)
    public  Seller seller;
 }

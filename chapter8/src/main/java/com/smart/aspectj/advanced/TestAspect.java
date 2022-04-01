@@ -7,18 +7,18 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class TestAspect {
 	//-------------复合运算----------
-//	@Before("!target(com.smart.NaiveWaiter) "+
-//			"&& execution(* serveTo(..)))")
+//	@Before("!target(com.smart.NaiveStudent) "+
+//			"&& execution(* play(..)))")
 //	public void notServeInNaiveWaiter() {
 //		System.out.println("--notServeInNaiveWaiter() executed!--");
 //	}
 //	@After("within(com.smart.*) "
-//			+ " && execution(* greetTo(..)))")
+//			+ " && execution(* examine(..)))")
 //	public void greeToFun() {
 //		System.out.println("--greeToFun() executed!--");
 //	}
 //	
-//	@AfterReturning("target(com.smart.Waiter) || "+
+//	@AfterReturning("target(com.smart.Student) || "+
 //			        " target(com.smart.Seller)")
 //	public void waiterOrSeller(){
 //		System.out.println("--waiterOrSeller() executed!--");
@@ -30,14 +30,14 @@ public class TestAspect {
 //		System.out.println("--pkgGreetTo() executed!--");
 //	}
 //
-//	@Before("!target(com.smart.NaiveWaiter) && "
+//	@Before("!target(com.smart.NaiveStudent) && "
 //			+"TestNamePointcut.inPkgGreetTo()")
 //	public void pkgGreetToNotNaiveWaiter(){
 //		System.out.println("--pkgGreetToNotNaiveWaiter() executed!--");
 //	}
 //
     //------------访问连接点对象----------//
-	@Around("execution(* greetTo(..)) && target(com.smart.NaiveWaiter)")
+	@Around("execution(* examine(..)) && target(com.smart.NaiveStudent)")
 	public void joinPointAccess(ProceedingJoinPoint pjp) throws Throwable{
 		System.out.println("------joinPointAccess-------");
 		System.out.println("args[0]:"+pjp.getArgs()[0]);		
@@ -47,7 +47,7 @@ public class TestAspect {
 	}
 //	
 //  //------------绑定连接点参数----------//
-//	@Before("target(com.smart.NaiveWaiter) && args(name,num,..)")
+//	@Before("target(com.smart.NaiveStudent) && args(name,num,..)")
 //	public void bindJoinPointParams(int num,String name){
 //	   System.out.println("----bindJoinPointParams()----");
 //	   System.out.println("name:"+name);
@@ -56,9 +56,9 @@ public class TestAspect {
 //	}
 
   //------------绑定代理对象----------//
-//	@Before("execution(* greetTo(..)) && this(waiter)")
+//	@Before("execution(* examine(..)) && this(waiter)")
 //	@Before("this(waiter)")
-//	public void bindProxyObj(Waiter waiter){
+//	public void bindProxyObj(Student waiter){
 //	   System.out.println("----bindProxyObj()----");
 //	   System.out.println(waiter.getClass().getName());
 //	   System.out.println("----bindProxyObj()----");

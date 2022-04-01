@@ -8,12 +8,12 @@
 	    <aop:advisor advice-ref="testAdvice"  pointcut="execution(* com..*.Waiter.greetTo(..))"/>  
 		<aop:aspect ref="adviceMethods">
 			<aop:before method="preGreeting"
-				pointcut="target(com.smart.NaiveWaiter) and args(name)"
+				pointcut="target(com.smart.NaiveStudent) and args(name)"
 				arg-names="name" />
 			<aop:after-returning method="afterReturning"
 				pointcut="target(com.smart.SmartSeller)" returning="retVal" />
 			<aop:around method="aroundMethod"
-				pointcut="execution(* serveTo(..)) and within(com.smart.Waiter)" />
+				pointcut="execution(* serveTo(..)) and within(com.smart.Student)" />
 			<aop:after-throwing method="afterThrowingMethod"
 				pointcut="target(com.smart.SmartSeller) and execution(* checkBill(..))"
 				throwing="iae" />
@@ -22,14 +22,14 @@
 			<aop:declare-parents
 				implement-interface="com.smart.Seller"
 				default-impl="com.smart.SmartSeller"
-				types-matching="com.smart.Waiter+" />
+				types-matching="com.smart.Student+" />
             <aop:before method="bindParams" 
-                   pointcut="target(com.smart.NaiveWaiter) and args(name,num,..)"/>
+                   pointcut="target(com.smart.NaiveStudent) and args(name,num,..)"/>
 		</aop:aspect>
 	</aop:config>
     <bean id="testAdvice" class="com.smart.schema.TestBeforeAdvice"/>
 	<bean id="adviceMethods" class="com.smart.schema.AdviceMethods" />
-	<bean id="naiveWaiter" class="com.smart.NaiveWaiter" />
-	<bean id="naughtyWaiter" class="com.smart.NaughtyWaiter" />
+	<bean id="naiveStudent" class="com.smart.NaiveStudent" />
+	<bean id="naughtyStudent" class="com.smart.NaughtyStudent" />
 	<bean id="seller" class="com.smart.SmartSeller" />
 </beans>

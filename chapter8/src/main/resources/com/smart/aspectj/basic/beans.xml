@@ -5,6 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
     <aop:aspectj-autoproxy/>
-	<bean id="waiter" class="com.smart.NaiveWaiter"/>
+	<bean id="student" class="com.smart.NaiveStudent"/>
 	<bean class="com.smart.aspectj.basic.EnableSellerAspect"/>
 </beans>

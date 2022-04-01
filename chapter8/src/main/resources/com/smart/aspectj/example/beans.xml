@@ -6,6 +6,6 @@
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
     <aop:aspectj-autoproxy/>
     <!--bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator"/-->
-	<bean id="waiter" class="com.smart.NaiveWaiter" />
-	<bean class="com.smart.aspectj.example.PreGreetingAspect" />
+	<bean id="student" class="com.smart.NaiveStudent" />
+	<bean class="com.smart.aspectj.example.PrepareAspect" />
 </beans>
