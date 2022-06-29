@@ -1,10 +1,14 @@
 package com.smart.context;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import com.smart.Car;
+import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 
-public class MyBeanPostProcessor implements BeanPostProcessor{
+import java.beans.PropertyDescriptor;
+
+public class MyBeanPostProcessor implements InstantiationAwareBeanPostProcessor, BeanPostProcessor {
 
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		if(beanName.equals("car")){
@@ -26,5 +30,17 @@ public class MyBeanPostProcessor implements BeanPostProcessor{
 			}
 		}
 		return bean;
+	}
+
+	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+		return null;
+	}
+
+	public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
+		return false;
+	}
+
+	public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) throws BeansException {
+		return null;
 	}
 }

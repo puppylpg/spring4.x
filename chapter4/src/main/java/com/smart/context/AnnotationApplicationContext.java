@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AnnotationApplicationContext {
 	public static void main(String[] args) {
-//		ApplicationContext ctx = new AnnotationConfigApplicationContext(Beans.class);
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(Beans.class);
 
 
 		/**
@@ -18,7 +18,7 @@ public class AnnotationApplicationContext {
 		 *
 		 * 而{@link org.springframework.beans.factory.BeanFactory}必须有手动add bean post processor的调用动作
 		 */
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("com/smart/context/beans.xml");
+//		ApplicationContext ctx = new ClassPathXmlApplicationContext("com/smart/context/beans.xml");
 		Car car =ctx.getBean("car",Car.class);
 	}
 }
